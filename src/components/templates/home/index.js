@@ -1,23 +1,27 @@
 import React, { useEffect } from 'react';
-import { Container } from '@mui/material';
-import { api } from 'api';
+import { Container, Typography } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCoinsWithGlobalAveragePrice } from 'redux/coins/thunk';
+import { getCoins } from 'redux/coins/selector';
 
 
 
 export const Home = () => {
+  const dispatch = useDispatch();
+  const coins = useSelector(getCoins);
 
-  // useEffect(() => {
-  //   getCoinsWithGlobalAveragePrice();
-  // }, []);
-
-  // const getCoinsWithGlobalAveragePrice = async () => {
-  //   const result = await api.get(`coins?skip=0&limit=5&currency=EUR`);
-  //   if (result.status === 200) 
-  // };
+  useEffect(() => {
+    if (coins?.length > 0) return;
+    dispatch(getCoinsWithGlobalAveragePrice());
+  }, []);
 
   return (
     <Container>
-
+      {coins.map((item, index) => {
+        return (
+          <Typography>{item?.name}</Typography>
+        );
+      })}
     </Container>
   );
 };
