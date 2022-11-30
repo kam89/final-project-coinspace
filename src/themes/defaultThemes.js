@@ -1,16 +1,16 @@
 export const defaultThemes = {
   palette: {
     primary: {
-      light: '#bdf478',
-      main: '#8bc34a',
-      dark: '#599014',
+      light: '#ffffff',
+      main: '#dae2dc',
+      dark: '#a8b0aa',
       contrastText: '#000000',
     },
     secondary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#ffffff',
+      light: '#ffdee9',
+      main: '#f4acb7',
+      dark: '#c07c87',
+      contrastText: '#000000',
     },
   },
   typography: {
