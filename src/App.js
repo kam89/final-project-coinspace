@@ -13,16 +13,20 @@ import '@fontsource/roboto/700.css';
 
 import { defaultThemes } from 'themes';
 import { Home } from 'components/templates/home';
+import { Provider } from 'react-redux';
+import { store } from 'redux/store';
 
 function App() {
   let theme = createTheme(defaultThemes);
   theme = responsiveFontSizes(theme);
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline enableColorScheme />
-      <Container maxWidth="lg">
-        <Home />
-      </Container>
+      <Provider store={store}>
+        <CssBaseline enableColorScheme />
+        <Container maxWidth="lg">
+          <Home />
+        </Container>
+      </Provider>
     </ThemeProvider>
   );
 }
