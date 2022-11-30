@@ -12,6 +12,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import { defaultThemes } from 'themes';
+import { Home } from 'components/templates/home';
 
 function App() {
   let theme = createTheme(defaultThemes);
@@ -20,6 +21,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
       <Container maxWidth="lg">
+        <Home />
       </Container>
     </ThemeProvider>
   );
