@@ -1,3 +1,30 @@
+import { Looks3, Looks4, Looks5, LooksOne, LooksTwo } from "@mui/icons-material";
+import { blueGrey } from "@mui/material/colors";
+
+export const ranks = {
+  1: <LooksOne />,
+  2: <LooksTwo />,
+  3: <Looks3 />,
+  4: <Looks4 />,
+  5: <Looks5 />,
+};
+
+export const ranksColor = {
+  1: 'gold',
+  2: 'silver',
+  3: '#CD7F32',
+  4: blueGrey[400],
+  5: blueGrey[400],
+};
+
+export const currencies = {
+  EUR: 'EUR',
+  GBP: 'GBP',
+  USD: 'USD',
+  MYR: 'MYR',
+  SGD: 'SGD'
+};
+
 export const coins = [
   {
     id: 'bitcoin',
