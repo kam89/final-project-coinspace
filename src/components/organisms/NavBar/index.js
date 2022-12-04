@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   AppBar,
   Avatar,
@@ -19,10 +20,7 @@ export const NavBar = ({ appName }) => {
         <Typography
           variant="h6"
           noWrap
-          component="a"
-          href="/"
           sx={{
-            marginRight: 2,
             display: 'flex',
             fontFamily: 'monospace',
             fontWeight: 700,
@@ -36,4 +34,8 @@ export const NavBar = ({ appName }) => {
       </Toolbar>
     </AppBar>
   );
+};
+
+NavBar.propTypes = {
+  appName: PropTypes.string.isRequired
 };
