@@ -1,12 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   AppBar,
-  Avatar,
   Toolbar,
   Typography
 } from '@mui/material';
-import { CurrencyBitcoin } from '@mui/icons-material';
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 
 export const NavBar = ({ appName }) => {
