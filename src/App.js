@@ -6,6 +6,7 @@ import {
   responsiveFontSizes,
   ThemeProvider
 } from '@mui/material';
+import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -15,6 +16,18 @@ import { defaultThemes } from 'themes';
 import { Home } from 'components/templates/home';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
+import { NavBar } from 'components/organisms/NavBar';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: 'price/history',
+    element: {}
+  }
+]);
 
 function App() {
   let theme = createTheme(defaultThemes);
@@ -23,8 +36,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <CssBaseline enableColorScheme />
-        <Container maxWidth="lg">
-          <Home />
+        <NavBar appName={"Coins Info"} />
+        <Container maxWidth="xl">
+          <RouterProvider router={router} />
         </Container>
       </Provider>
     </ThemeProvider>
