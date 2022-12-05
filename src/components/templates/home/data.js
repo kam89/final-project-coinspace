@@ -9,6 +9,22 @@ export const ranks = {
   5: <Looks5 />,
 };
 
+export const lottieRanks = {
+  1: "https://assets3.lottiefiles.com/packages/lf20_otic4zzq.json",
+  2: "https://assets7.lottiefiles.com/packages/lf20_5ao2yi69.json",
+  3: "https://assets5.lottiefiles.com/packages/lf20_rstfabfn.json",
+  4: "https://assets7.lottiefiles.com/packages/lf20_sw59me01.json",
+  5: "https://assets7.lottiefiles.com/packages/lf20_dwf8jt6a.json",
+};
+
+export const lottieRanksIframe = {
+  1: "https://embed.lottiefiles.com/animation/33614",
+  2: "https://embed.lottiefiles.com/animation/33618",
+  3: "https://embed.lottiefiles.com/animation/33615",
+  4: "https://embed.lottiefiles.com/animation/33612",
+  5: "https://embed.lottiefiles.com/animation/33617",
+};
+
 export const ranksColor = {
   1: 'gold',
   2: 'silver',
