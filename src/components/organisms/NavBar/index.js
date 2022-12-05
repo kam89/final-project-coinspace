@@ -5,7 +5,7 @@ import {
   Toolbar,
   Typography
 } from '@mui/material';
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 export const NavBar = ({ appName }) => {
   return (
