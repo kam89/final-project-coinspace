@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   AppBar,
@@ -7,16 +7,18 @@ import {
   Typography
 } from '@mui/material';
 import { CurrencyBitcoin } from '@mui/icons-material';
-
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
 
 export const NavBar = ({ appName }) => {
-
   return (
     <AppBar position='static'>
       <Toolbar disableGutters>
-        <Avatar variant='circular' sx={{ marginRight: 1, marginLeft: 5, transform: 'rotate(25deg)' }}>
-          <CurrencyBitcoin />
-        </Avatar>
+        <Player
+          autoplay
+          loop
+          src="https://assets7.lottiefiles.com/packages/lf20_3bhqygev.json"
+          style={{ height: 100, width: 100 }}
+        />
         <Typography
           variant="h6"
           noWrap
