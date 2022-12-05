@@ -18,16 +18,16 @@ import {
   useMediaQuery,
   useTheme
 } from '@mui/material';
+import { Player } from "@lottiefiles/react-lottie-player";
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoinsWithGlobalAveragePrice } from 'redux/coins/thunk';
 import { getCoins } from 'redux/coins/selector';
 
-import { coins, currencies, ranks, ranksColor } from './data';
+import { coins, currencies, lottieRanks, ranks, ranksColor } from './data';
 import { ItemCard } from 'components/organisms/ItemCard';
-import { formatAmount, renderAmountColor, renderAmountSign } from 'function';
+import { formatAmount } from 'function';
 import { Twitter } from '@mui/icons-material';
-
-
+import { PriceCard } from 'components/organisms/PriceCard';
 
 export const Home = () => {
   const theme = useTheme();
@@ -87,7 +87,7 @@ export const Home = () => {
       <Stack
         direction='row'
         spacing={2}
-        marginTop={2}
+        marginTop={5}
         marginBottom={2}
         maxWidth={bigScreen ? 'xl' : 'md'}
         overflow={'auto'}
@@ -95,9 +95,17 @@ export const Home = () => {
       >
         {coins.map((item, index) => {
           return (
-            <Card sx={{ minWidth: 200 }} key={index}>
+            <Card sx={{ minWidth: 240 }} key={index}>
               <CardActionArea onClick={() => handleSelectCoin(item)}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <CardMedia component='picture'>
+                  <Player
+                    autoplay
+                    loop
+                    src={lottieRanks[item.rank]}
+                    style={{ height: 'auto', width: 250 }}
+                  />
+                </CardMedia>
+                <Box sx={{ width: 'auto', alignItems: 'center', justifyContent: 'center', display: 'flex', top: -15, position: 'relative' }}>
                   <Badge
                     badgeContent={item.rank}
                     color='primary'
@@ -108,11 +116,11 @@ export const Home = () => {
                     <CardMedia
                       component='img'
                       src={item.icon}
-                      height='40'
-                      sx={{ width: 'auto' }}
+                      height='auto'
+                      sx={{ width: 40 }}
                     />
                   </Badge>
-                </div>
+                </Box>
 
                 <CardContent>
                   <Box sx={{ flexDirection: 'row', display: 'inline-flex', alignItems: 'center' }}>
@@ -142,18 +150,20 @@ export const Home = () => {
                 <Typography variant='h6'>{selectedCoin.name}</Typography>
                 <Typography variant='body2' color='text.secondary'>{selectedCoin.symbol}</Typography>
               </Box>
-              <Avatar sx={{ backgroundColor: ranksColor[selectedCoin.rank] }}>{renderRank(selectedCoin.rank)}</Avatar>
+              <Box sx={{ display: 'flex', flexDirection: 'column', marginRight: 1, alignItems: 'center' }}>
+                <Typography variant='body1'>{formatAmount(selectedCurrency, selectedCoin.price)}</Typography>
+                <Stack direction='row' spacing={1} alignItems='center'>
+                  <PriceCard value={selectedCoin.priceChange1h} type="1h" />
+                  <PriceCard value={selectedCoin.priceChange1d} type="1d" />
+                  <PriceCard value={selectedCoin.priceChange1w} type="1w" />
+                </Stack>
+              </Box>
+              <Avatar sx={{ backgroundColor: ranksColor[selectedCoin.rank], alignSelf: 'flex-start' }}>{renderRank(selectedCoin.rank)}</Avatar>
             </Box>
             <Divider variant='middle' />
 
             <Box sx={{ flexGrow: 1, marginTop: 1, marginBottom: 2 }}>
-              <Grid container columns={{ xs: 1, sm: 2, md: 3 }} rowSpacing={1} columnSpacing={1} direction={isColumn ? 'column' : 'row'} sx={{ marginBottom: 2 }}>
-                <ItemCard title="Price Change in 1 hour" value={renderAmountSign(selectedCoin.priceChange1h) + selectedCoin.priceChange1h + '%'} color={renderAmountColor(selectedCoin.priceChange1h)} />
-                <ItemCard title="Price Change in 1 day" value={renderAmountSign(selectedCoin.priceChange1d) + selectedCoin.priceChange1d + '%'} color={renderAmountColor(selectedCoin.priceChange1d)} />
-                <ItemCard title="Price Change in 1 week" value={renderAmountSign(selectedCoin.priceChange1w) + selectedCoin.priceChange1w + '%'} color={renderAmountColor(selectedCoin.priceChange1w)} />
-              </Grid>
               <Grid container columns={{ xs: 1, sm: 2, md: 3, lg: 5 }} rowSpacing={1} columnSpacing={1} direction={isColumn ? 'column' : 'row'}>
-                <ItemCard title="Price" value={formatAmount(selectedCurrency, selectedCoin.price)} />
                 <ItemCard title="Volume" value={selectedCoin.volume} />
                 <ItemCard title="Market Capitalization" value={formatAmount(selectedCurrency, selectedCoin.marketCap)} />
                 <ItemCard title="Available Supply" value={selectedCoin.availableSupply} />
