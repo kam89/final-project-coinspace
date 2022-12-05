@@ -1,5 +1,6 @@
 export const defaultThemes = {
   palette: {
+    mode: 'dark',
     primary: {
       light: '#ffffff',
       main: '#dae2dc',
