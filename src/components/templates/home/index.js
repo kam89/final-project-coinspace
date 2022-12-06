@@ -31,7 +31,7 @@ import { PriceChanges } from 'components/molecules/PriceChanges';
 
 export const Home = () => {
   const theme = useTheme();
-  const bigScreen = useMediaQuery(theme.breakpoints.up('lg'));
+  const bigScreen = useMediaQuery(theme.breakpoints.up('sm'));
   const isColumn = useMediaQuery(theme.breakpoints.down('sm'));
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
@@ -97,26 +97,15 @@ export const Home = () => {
           return (
             <div style={{ marginTop: 10 }}>
               <Box sx={{ width: 'auto', alignItems: 'center', justifyContent: 'center', display: 'flex', top: 15, position: 'relative', zIndex: 1 }}>
-                <Badge
-                  badgeContent={item.rank}
-                  color='primary'
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
-                  }}
-                  sx={{ position: 'absolute', bottom: 0, zIndex: 2 }}
-                >
-                  <CardMedia
-                    component='img'
-                    src={item.icon}
-                    height='auto'
-                    sx={{ width: 40, zIndex: 2 }}
-                  />
-                </Badge>
+                <CardMedia
+                  component='img'
+                  src={item.icon}
+                  height='auto'
+                  sx={{ width: 40, zIndex: 2, position: 'absolute', bottom: 0, }}
+                />
               </Box>
               <Card sx={{ minWidth: 240 }} key={index}>
                 <CardActionArea onClick={() => handleSelectCoin(item)}>
-
                   <CardMedia component='picture'>
                     <Player
                       autoplay
@@ -126,9 +115,12 @@ export const Home = () => {
                     />
                   </CardMedia>
                   <CardContent>
-                    <Box sx={{ flexDirection: 'row', display: 'inline-flex', alignItems: 'center' }}>
-                      <Typography variant='h5' component='div'>{item.name}</Typography>
-                      <Typography variant='body1' color='text.secondary' sx={{ marginLeft: 1 }}>({item.symbol})</Typography>
+                    <Box sx={{ flexDirection: 'row', display: 'infline-flex', alignItems: 'center', justifyContent: 'spce-between' }}>
+                      <Box sx={{ flexDirection: 'row', display: 'inline-flex', alignItems: 'center' }}>
+                        <Typography variant='h5' component='div'>{item.name}</Typography>
+                        <Typography variant='body1' color='text.secondary' sx={{ marginLeft: 1 }}>({item.symbol})</Typography>
+                      </Box>
+                      <Avatar sx={{ backgroundColor: ranksColor[item.rank], position: 'relative', right: -10, top: -30 }}>{renderRank(item.rank)}</Avatar>
                     </Box>
                     <Box sx={{ flexDirection: 'column' }}>
                       <Typography variant='caption'>Market Cap.</Typography>
@@ -145,7 +137,7 @@ export const Home = () => {
         selectedCoin &&
         <Box>
           <Paper sx={{ padding: 2 }}>
-            <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
+            <Box sx={{ display: 'flex', flexDirection: bigScreen ? 'row' : 'column', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
               <Box
                 component='img'
                 src={selectedCoin.icon}
@@ -157,7 +149,7 @@ export const Home = () => {
               </Box>
               <Box sx={{ display: 'flex', flexDirection: 'column', marginRight: 1, alignItems: 'center' }}>
                 <Typography variant='body1'>{formatAmount(selectedCurrency, selectedCoin.price)}</Typography>
-                <Stack direction='row' spacing={1} alignItems='center'>
+                <Stack direction={bigScreen ? 'row' : 'column'} spacing={1} alignItems='center'>
                   <PriceChanges value={selectedCoin.priceChange1h} type="1h" />
                   <PriceChanges value={selectedCoin.priceChange1d} type="1d" />
                   <PriceChanges value={selectedCoin.priceChange1w} type="1w" />
