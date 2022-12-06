@@ -65,7 +65,7 @@ export const Home = () => {
   );
 
   return (
-    <Container sx={{ marginTop: 1 }}>
+    <Container sx={{ marginTop: 1, marginBottom: 6 }}>
       <Typography variant="h4">Top 5 Coins</Typography>
       <CurrenciesChipGroup
         selected={selectedCurrency}
