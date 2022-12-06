@@ -27,7 +27,7 @@ import { coins, currencies, lottieRanks, ranks, ranksColor } from './data';
 import { ItemCard } from 'components/organisms/ItemCard';
 import { formatAmount } from 'function';
 import { Twitter } from '@mui/icons-material';
-import { PriceCard } from 'components/molecules/PriceCard';
+import { PriceChanges } from 'components/molecules/PriceChanges';
 
 export const Home = () => {
   const theme = useTheme();
@@ -153,9 +153,9 @@ export const Home = () => {
               <Box sx={{ display: 'flex', flexDirection: 'column', marginRight: 1, alignItems: 'center' }}>
                 <Typography variant='body1'>{formatAmount(selectedCurrency, selectedCoin.price)}</Typography>
                 <Stack direction='row' spacing={1} alignItems='center'>
-                  <PriceCard value={selectedCoin.priceChange1h} type="1h" />
-                  <PriceCard value={selectedCoin.priceChange1d} type="1d" />
-                  <PriceCard value={selectedCoin.priceChange1w} type="1w" />
+                  <PriceChanges value={selectedCoin.priceChange1h} type="1h" />
+                  <PriceChanges value={selectedCoin.priceChange1d} type="1d" />
+                  <PriceChanges value={selectedCoin.priceChange1w} type="1w" />
                 </Stack>
               </Box>
               <Avatar sx={{ backgroundColor: ranksColor[selectedCoin.rank], alignSelf: 'flex-start' }}>{renderRank(selectedCoin.rank)}</Avatar>
