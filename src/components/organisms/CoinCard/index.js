@@ -5,7 +5,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import { lottieRanks, ranks, ranksColor } from 'components/templates/home/data';
 import { formatAmount } from 'function';
 
-export const ItemCard = ({ item, index, currency, onClick }) => {
+export const CoinCard = ({ item, index, currency, onClick }) => {
   return (
     <div style={{ marginTop: 10 }}>
       <Box sx={{ width: 'auto', alignItems: 'center', justifyContent: 'center', display: 'flex', top: 15, position: 'relative', zIndex: 1 }}>
