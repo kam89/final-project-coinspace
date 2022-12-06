@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   Avatar,
   Box,
@@ -20,16 +20,18 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoinsWithGlobalAveragePrice } from 'redux/coins/thunk';
 import { getCoins } from 'redux/coins/selector';
+import { Player } from '@lottiefiles/react-lottie-player';
+import { Twitter } from '@mui/icons-material';
 
 import { coins, currencies, ranks, ranksColor } from './data';
 import { CoinCard } from 'components/molecules/CoinCard';
 import { formatAmount } from 'function';
-import { Twitter } from '@mui/icons-material';
 import { PriceChanges } from 'components/molecules/PriceChanges';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 
 export const Home = () => {
   const theme = useTheme();
+  const lottiePlayerRef = useRef();
   const bigScreen = useMediaQuery(theme.breakpoints.up('sm'));
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
@@ -37,6 +39,9 @@ export const Home = () => {
 
   useEffect(() => {
     // to call api for first time
+    setTimeout(() => {
+      lottiePlayerRef.current.pause();
+    }, [1500]);
   }, [selectedCurrency, selectedCoin]);
 
   const handleSelectCoin = (coin) => {
@@ -66,6 +71,22 @@ export const Home = () => {
 
   return (
     <Container sx={{ marginTop: 1, marginBottom: 6 }}>
+      <Box sx={{ position: 'relative', top: -100, left: -500, height: 100 }}>
+        <Player
+          ref={lottiePlayerRef}
+          autoplay
+          loop
+          src="https://assets10.lottiefiles.com/packages/lf20_uvecalmq.json"
+          style={{ height: '25%', width: '30%' }}
+        />
+      </Box>
+      <Box sx={{ textAlign: 'center', marginBottom: 10 }}>
+        <Typography variant="h3">Hello Beginner!</Typography>
+        <Typography variant="body1">
+          Welcome. You can start your journey from here!
+        </Typography>
+      </Box>
+
       <Typography variant="h4">Top 5 Coins</Typography>
       <CurrenciesChipGroup
         selected={selectedCurrency}
@@ -230,7 +251,7 @@ export const Home = () => {
                       color="info"
                       variant="filled"
                       label={'Twitter'}
-                      icon={<Twitter />}
+                      icon={<Twitter fontSize="small" />}
                       onClick={() => handleOpenWebsite(selectedCoin.twitterUrl)}
                     />
                     {selectedCoin.exp.map((exp, index) => (
