@@ -87,7 +87,7 @@ export const Home = () => {
       <Stack
         direction='row'
         spacing={2}
-        marginTop={5}
+        marginTop={2}
         marginBottom={2}
         maxWidth={bigScreen ? 'xl' : 'md'}
         overflow={'auto'}
@@ -95,49 +95,54 @@ export const Home = () => {
       >
         {coins.map((item, index) => {
           return (
-            <Card sx={{ minWidth: 240 }} key={index}>
-              <CardActionArea onClick={() => handleSelectCoin(item)}>
-                <CardMedia component='picture'>
-                  <Player
-                    autoplay
-                    loop
-                    src={lottieRanks[item.rank]}
-                    style={{ height: 'auto', width: 250 }}
+            <div style={{ marginTop: 10 }}>
+              <Box sx={{ width: 'auto', alignItems: 'center', justifyContent: 'center', display: 'flex', top: 15, position: 'relative', zIndex: 1 }}>
+                <Badge
+                  badgeContent={item.rank}
+                  color='primary'
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  sx={{ position: 'absolute', bottom: 0, zIndex: 2 }}
+                >
+                  <CardMedia
+                    component='img'
+                    src={item.icon}
+                    height='auto'
+                    sx={{ width: 40, zIndex: 2 }}
                   />
-                </CardMedia>
-                <Box sx={{ width: 'auto', alignItems: 'center', justifyContent: 'center', display: 'flex', top: -15, position: 'relative' }}>
-                  <Badge
-                    badgeContent={item.rank}
-                    color='primary'
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'right',
-                    }}>
-                    <CardMedia
-                      component='img'
-                      src={item.icon}
-                      height='auto'
-                      sx={{ width: 40 }}
-                    />
-                  </Badge>
-                </Box>
+                </Badge>
+              </Box>
+              <Card sx={{ minWidth: 240 }} key={index}>
+                <CardActionArea onClick={() => handleSelectCoin(item)}>
 
-                <CardContent>
-                  <Box sx={{ flexDirection: 'row', display: 'inline-flex', alignItems: 'center' }}>
-                    <Typography variant='h5' component='div'>{item.name}</Typography>
-                    <Typography variant='body1' color='text.secondary' sx={{ marginLeft: 1 }}>({item.symbol})</Typography>
-                  </Box>
-                  <Box sx={{ flexDirection: 'column' }}>
-                    <Typography variant='caption'>Market Cap.</Typography>
-                    <Typography variant='body2' color='text.secondary'>{formatAmount(selectedCurrency, item.marketCap)}</Typography>
-                  </Box>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+                  <CardMedia component='picture'>
+                    <Player
+                      autoplay
+                      loop
+                      src={lottieRanks[item.rank]}
+                      style={{ height: 'auto', width: 250 }}
+                    />
+                  </CardMedia>
+                  <CardContent>
+                    <Box sx={{ flexDirection: 'row', display: 'inline-flex', alignItems: 'center' }}>
+                      <Typography variant='h5' component='div'>{item.name}</Typography>
+                      <Typography variant='body1' color='text.secondary' sx={{ marginLeft: 1 }}>({item.symbol})</Typography>
+                    </Box>
+                    <Box sx={{ flexDirection: 'column' }}>
+                      <Typography variant='caption'>Market Cap.</Typography>
+                      <Typography variant='body2' color='text.secondary'>{formatAmount(selectedCurrency, item.marketCap)}</Typography>
+                    </Box>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </div>
           );
         })}
       </Stack>
-      {selectedCoin &&
+      {
+        selectedCoin &&
         <Box>
           <Paper sx={{ padding: 2 }}>
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
