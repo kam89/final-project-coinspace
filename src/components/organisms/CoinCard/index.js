@@ -9,10 +9,9 @@ export const CoinCard = ({ item, index, currency, onClick }) => {
   return (
     <div style={{ marginTop: 10 }}>
       <Box sx={{ width: 'auto', alignItems: 'center', justifyContent: 'center', display: 'flex', top: 15, position: 'relative', zIndex: 1 }}>
-        <CardMedia
+        <Box
           component='img'
           src={item.icon}
-          height='auto'
           sx={{ width: 40, zIndex: 2, position: 'absolute', bottom: 0, }}
         />
       </Box>
