@@ -27,7 +27,7 @@ import { coins, currencies, lottieRanks, ranks, ranksColor } from './data';
 import { ItemCard } from 'components/organisms/ItemCard';
 import { formatAmount } from 'function';
 import { Twitter } from '@mui/icons-material';
-import { PriceCard } from 'components/organisms/PriceCard';
+import { PriceCard } from 'components/molecules/PriceCard';
 
 export const Home = () => {
   const theme = useTheme();
