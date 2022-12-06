@@ -29,4 +29,4 @@ export const renderAmountSign = (value) => {
 
 renderAmountSign.propTypes = {
   value: PropTypes.number.isRequired
-};;
+};
