@@ -2,9 +2,9 @@ export const defaultThemes = {
   palette: {
     mode: 'dark',
     primary: {
-      light: '#ffffff',
-      main: '#dae2dc',
-      dark: '#a8b0aa',
+      light: '#ffff52',
+      main: '#ffd700',
+      dark: '#c7a600',
       contrastText: '#000000',
     },
     secondary: {
@@ -17,7 +17,7 @@ export const defaultThemes = {
   typography: {
     fontSize: 16,
     button: {
-      textTransform: 'none'
-    }
+      textTransform: 'none',
+    },
   },
 };
