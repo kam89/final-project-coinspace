@@ -4,7 +4,7 @@ import {
   createTheme,
   CssBaseline,
   responsiveFontSizes,
-  ThemeProvider
+  ThemeProvider,
 } from '@mui/material';
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 import '@fontsource/roboto/300.css';
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
   },
   {
     path: 'price/history',
-    element: {}
-  }
+    element: {},
+  },
 ]);
 
 function App() {
@@ -36,7 +36,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <CssBaseline enableColorScheme />
-        <NavBar appName={"Coins Info"} />
+        <NavBar
+          appName={'Coins Space'}
+          description={'A Beginner Village for Just Starter'}
+        />
         <Container maxWidth="xl">
           <RouterProvider router={router} />
         </Container>
