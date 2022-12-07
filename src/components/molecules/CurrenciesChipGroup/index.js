@@ -1,15 +1,15 @@
-import React from "react";
-import { Stack, Chip } from "@mui/material";
-import { currencies } from "components/templates/home/data";
+import React from 'react';
+import { Stack, Chip } from '@mui/material';
+import { currencies } from 'components/templates/home/data';
 
-export const CurrenciesChipGroup = ({ selected, onClick }) => {
+export const CurrenciesChipGroup = ({ currency, onClick }) => {
   return (
-    <Stack alignItems={"flex-end"}>
+    <Stack alignItems={'flex-end'}>
       <Stack direction="row" spacing={1}>
         {Object.values(currencies).map((item, index) => (
           <Chip
             variant="filled"
-            color={selected === item ? "primary" : "secondary"}
+            color={currency === item ? 'primary' : 'secondary'}
             key={index}
             label={item}
             onClick={() => onClick(item)}
