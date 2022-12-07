@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Typography,
@@ -24,7 +24,6 @@ export const CoinDetailCard = ({ data = {}, currency }) => {
   const theme = useTheme();
   const bigScreen = useMediaQuery(theme.breakpoints.up('sm'));
   const navigate = useNavigate();
-  const [isHistoricalPriceShown, setIsHistoricalPriceShown] = useState(false);
 
   if (Object.keys(data).length === 0) return null;
 
@@ -57,11 +56,7 @@ export const CoinDetailCard = ({ data = {}, currency }) => {
   };
 
   const handleShowHistoricalPrice = () => {
-    setIsHistoricalPriceShown(!isHistoricalPriceShown);
-    if (!isHistoricalPriceShown) {
-      return navigate(`/HistoricalPrice/${id}`);
-    }
-    return navigate(`/`);
+    return navigate(`/HistoricalPrice/${id}`);
   };
 
   const availableSupplyPercentage = Math.floor(
@@ -219,7 +214,7 @@ export const CoinDetailCard = ({ data = {}, currency }) => {
           variant="outlined"
           size="large"
           onClick={handleShowHistoricalPrice}>
-          {(isHistoricalPriceShown ? 'Hide' : 'Show') + ' Historical Price'}
+          {'View Historical Price'}
         </Button>
       </Box>
     </Box>
