@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Box,
-  Container,
-  Stack,
-  SvgIcon,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+import { Box, Container, SvgIcon, Typography } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
-import { coins, currencies } from './data';
-import { CoinCard } from 'components/molecules/CoinCard';
+import { currencies } from './data';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinDetailCard } from 'components/organisms/CoinDetailCard';
+import { CoinCards } from 'components/organisms/CoinCards';
+
+const coins = [];
 
 export const Home = () => {
-  const theme = useTheme();
-  const bigScreen = useMediaQuery(theme.breakpoints.up('sm'));
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
   const [selectedCoin, setSelectedCoin] = useState();
@@ -62,28 +54,15 @@ export const Home = () => {
 
       <Typography variant="h4">Top 5 Coins</Typography>
       <CurrenciesChipGroup
-        selected={selectedCurrency}
+        currency={selectedCurrency}
         onClick={handleSelectCurrency}
       />
-      <Stack
-        direction="row"
-        spacing={2}
-        marginTop={2}
-        marginBottom={2}
-        maxWidth={bigScreen ? 'xl' : 'md'}
-        overflow={'auto'}
-        padding={2}>
-        {coins.map((item, index) => (
-          <CoinCard
-            item={item}
-            index={index}
-            key={index}
-            currency={selectedCurrency}
-            onClick={handleSelectCoin}
-          />
-        ))}
-      </Stack>
-
+      <CoinCards
+        data={coins}
+        isLoading={true}
+        currency={selectedCurrency}
+        onClick={handleSelectCoin}
+      />
       <CoinDetailCard data={selectedCoin} currency={selectedCurrency} />
 
       <Box>
