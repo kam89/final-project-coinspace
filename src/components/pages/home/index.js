@@ -15,7 +15,6 @@ import { STATUS } from 'api';
 export const Home = () => {
   const dispatch = useDispatch();
   const CoinDetailCardRef = useRef();
-  // const [isLoading, setIsLoading] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
   const [selectedCoin, setSelectedCoin] = useState();
   const coins = useSelector(getCoins);
@@ -35,8 +34,6 @@ export const Home = () => {
         CoinDetailCardRef.current.scrollIntoView(false, { behavior: 'smooth' }),
       [100]
     );
-    // setIsLoading(true);
-    // setTimeout(() => setIsLoading(false), [1000]);
   };
 
   const handleSelectCurrency = (value) => {
