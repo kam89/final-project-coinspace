@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Avatar,
   Box,
-  Card,
-  CardContent,
-  Chip,
   Container,
-  Divider,
-  Grid,
-  LinearProgress,
-  Link,
-  Paper,
   Stack,
   SvgIcon,
   Typography,
@@ -18,9 +9,6 @@ import {
   useTheme,
 } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCoinsWithGlobalAveragePrice } from 'redux/coins/thunk';
-import { getCoins } from 'redux/coins/selector';
 
 import { coins, currencies } from './data';
 import { CoinCard } from 'components/molecules/CoinCard';
