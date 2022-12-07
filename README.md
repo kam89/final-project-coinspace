@@ -1,10 +1,14 @@
-# 
+#
 
 ## About this project
+
 This project is a final project for React Development Bootcamp @ General Assembly Malaysia.
 
 ## Credit & Attribution
-_Coming Soon_
+
+<a href="https://storyset.com/sport">Sport illustrations by Storyset</a>
+<a href="https://storyset.com/nature">Nature illustrations by Storyset</a>
+<a href="https://storyset.com/people">People illustrations by Storyset</a>
 
 <!-- # Getting Started with Create React App
 
