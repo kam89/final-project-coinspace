@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Box, Container, SvgIcon, Typography } from '@mui/material';
-import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getCoins, getCoinsStatus } from 'redux/coins/selector';
@@ -80,11 +79,7 @@ export const Home = () => {
         onClick={handleSelectCoin}
       />
       <CoinDetailCard data={selectedCoin} currency={selectedCurrency} />
-
       <div ref={CoinDetailCardRef} />
-      <Box>
-        <Outlet />
-      </Box>
     </Container>
   );
 };
