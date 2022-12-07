@@ -48,7 +48,7 @@ export const CoinDetailCard = ({ data = {}, currency }) => {
   };
 
   const handleOpenWebsite = (url) => {
-    console.log(url);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const availableSupplyPercentage = Math.floor(
