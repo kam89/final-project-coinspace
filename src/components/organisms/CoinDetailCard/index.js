@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Typography,
@@ -11,7 +11,9 @@ import {
   Chip,
   useTheme,
   useMediaQuery,
+  Button,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { Twitter } from '@mui/icons-material';
 
 import { PriceChanges } from 'components/molecules/PriceChanges';
@@ -21,10 +23,13 @@ import { ranksColor, ranks } from 'components/templates/home/data';
 export const CoinDetailCard = ({ data = {}, currency }) => {
   const theme = useTheme();
   const bigScreen = useMediaQuery(theme.breakpoints.up('sm'));
-  console.log(data);
+  const navigate = useNavigate();
+  const [isHistoricalPriceShown, setIsHistoricalPriceShown] = useState(false);
+
   if (Object.keys(data).length === 0) return null;
 
   const {
+    id,
     icon,
     name,
     symbol,
@@ -49,6 +54,14 @@ export const CoinDetailCard = ({ data = {}, currency }) => {
 
   const handleOpenWebsite = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleShowHistoricalPrice = () => {
+    setIsHistoricalPriceShown(!isHistoricalPriceShown);
+    if (!isHistoricalPriceShown) {
+      return navigate(`/HistoricalPrice/${id}`);
+    }
+    return navigate(`/`);
   };
 
   const availableSupplyPercentage = Math.floor(
@@ -196,6 +209,19 @@ export const CoinDetailCard = ({ data = {}, currency }) => {
           </Stack>
         </Grid>
       </Grid>
+
+      <Box
+        sx={{
+          textAlign: 'center',
+          marginTop: 5,
+        }}>
+        <Button
+          variant="outlined"
+          size="large"
+          onClick={handleShowHistoricalPrice}>
+          {(isHistoricalPriceShown ? 'Hide' : 'Show') + ' Historical Price'}
+        </Button>
+      </Box>
     </Box>
   );
 };
