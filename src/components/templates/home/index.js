@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   Box,
@@ -28,7 +28,7 @@ import { CoinCard } from 'components/molecules/CoinCard';
 import { formatAmount } from 'function';
 import { PriceChanges } from 'components/molecules/PriceChanges';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
-import { ReactComponent as HomeSvg } from 'assets/undraw_ordinary_day.svg';
+import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 
 export const Home = () => {
   const theme = useTheme();
@@ -70,20 +70,21 @@ export const Home = () => {
     <Container sx={{ marginTop: 1, marginBottom: 6 }}>
       <Box
         sx={{
+          height: 300,
           textAlign: 'center',
           marginBottom: 10,
         }}>
+        <Box>
+          <SvgIcon
+            component={ScopeSvg}
+            inheritViewBox
+            sx={{ width: 'auto', height: 250 }}
+          />
+        </Box>
         <Typography variant="h3">Hello Beginner!</Typography>
         <Typography variant="body1">
           Welcome. You can start your journey from here!
         </Typography>
-        <Box>
-          <SvgIcon
-            component={HomeSvg}
-            inheritViewBox
-            sx={{ width: 500, height: 500 }}
-          />
-        </Box>
       </Box>
 
       <Typography variant="h4">Top 5 Coins</Typography>
