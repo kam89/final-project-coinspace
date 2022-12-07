@@ -25,7 +25,7 @@ const slice = createSlice({
       }
     );
     builder.addCase(getCoinsWithGlobalAveragePrice.pending, (state) => {
-      state.status = STATUS.pending;
+      state.status = STATUS.LOADING;
     });
     builder.addCase(getCoinsWithGlobalAveragePrice.rejected, (state) => {
       state.status = STATUS.SUCCESS;
