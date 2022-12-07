@@ -7,8 +7,9 @@ This project is a final project for React Development Bootcamp @ General Assembl
 ## Credit & Attribution
 
 <a href="https://storyset.com/sport">Sport illustrations by Storyset</a>
-<a href="https://storyset.com/nature">Nature illustrations by Storyset</a>
-<a href="https://storyset.com/people">People illustrations by Storyset</a>
+
+<!-- <a href="https://storyset.com/nature">Nature illustrations by Storyset</a> -->
+<!-- <a href="https://storyset.com/people">People illustrations by Storyset</a> -->
 
 <!-- # Getting Started with Create React App
 
