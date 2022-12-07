@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Container, SvgIcon, Typography } from '@mui/material';
-import { Outlet } from 'react-router-dom';
 
 import { currencies } from './data';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
@@ -63,10 +62,6 @@ export const Home = () => {
         onClick={handleSelectCoin}
       />
       <CoinDetailCard data={selectedCoin} currency={selectedCurrency} />
-
-      <Box>
-        <Outlet />
-      </Box>
     </Container>
   );
 };
