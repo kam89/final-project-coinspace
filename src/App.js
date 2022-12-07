@@ -13,7 +13,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import { defaultThemes } from 'themes';
-import { Home } from 'components/templates/home';
+import { Home } from 'components/pages/home';
 import { HistoricalPrice } from 'components/templates/historicalPrice';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
