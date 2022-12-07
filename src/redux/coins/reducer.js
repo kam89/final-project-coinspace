@@ -1,10 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { STATUS } from 'api';
-import { getCoinsWithGlobalAveragePrice } from './thunk';
+import {
+  getCoinsWithGlobalAveragePrice,
+  getHistoricalGlobalAveragePriceChart,
+} from './thunk';
 
 const initialState = {
   status: STATUS.IDLE,
   coins: [],
+  historyStatus: STATUS.IDLE,
+  history: [],
 };
 
 const slice = createSlice({
@@ -28,7 +33,20 @@ const slice = createSlice({
       state.status = STATUS.LOADING;
     });
     builder.addCase(getCoinsWithGlobalAveragePrice.rejected, (state) => {
-      state.status = STATUS.SUCCESS;
+      state.status = STATUS.FAIL;
+    });
+    builder.addCase(
+      getHistoricalGlobalAveragePriceChart.fulfilled,
+      (state, { payload }) => {
+        state.historyStatus = STATUS.SUCCESS;
+        state.history = payload.chart;
+      }
+    );
+    builder.addCase(getHistoricalGlobalAveragePriceChart.pending, (state) => {
+      state.historyStatus = STATUS.LOADING;
+    });
+    builder.addCase(getHistoricalGlobalAveragePriceChart.rejected, (state) => {
+      state.historyStatus = STATUS.FAIL;
     });
   },
 });
