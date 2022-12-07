@@ -12,6 +12,7 @@ import {
   Link,
   Paper,
   Stack,
+  SvgIcon,
   Typography,
   useMediaQuery,
   useTheme,
@@ -27,6 +28,7 @@ import { CoinCard } from 'components/molecules/CoinCard';
 import { formatAmount } from 'function';
 import { PriceChanges } from 'components/molecules/PriceChanges';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
+import { ReactComponent as HomeSvg } from 'assets/undraw_ordinary_day.svg';
 
 export const Home = () => {
   const theme = useTheme();
@@ -55,7 +57,7 @@ export const Home = () => {
     console.log(url);
   };
 
-  const displayExchangeName = (value) => {
+  const getDisplayNameFromURL = (value) => {
     const domain = new URL(value);
     return domain.hostname;
   };
@@ -66,11 +68,22 @@ export const Home = () => {
 
   return (
     <Container sx={{ marginTop: 1, marginBottom: 6 }}>
-      <Box sx={{ textAlign: 'center', marginBottom: 10 }}>
+      <Box
+        sx={{
+          textAlign: 'center',
+          marginBottom: 10,
+        }}>
         <Typography variant="h3">Hello Beginner!</Typography>
         <Typography variant="body1">
           Welcome. You can start your journey from here!
         </Typography>
+        <Box>
+          <SvgIcon
+            component={HomeSvg}
+            inheritViewBox
+            sx={{ width: 500, height: 500 }}
+          />
+        </Box>
       </Box>
 
       <Typography variant="h4">Top 5 Coins</Typography>
@@ -244,7 +257,7 @@ export const Home = () => {
                       <Chip
                         color="info"
                         variant="filled"
-                        label={displayExchangeName(exp)}
+                        label={getDisplayNameFromURL(exp)}
                         onClick={() => handleOpenWebsite(exp)}
                         key={index}
                       />
