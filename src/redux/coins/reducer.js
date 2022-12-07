@@ -12,11 +12,15 @@ const slice = createSlice({
   initialState,
   reducers: {
     coinsReset: (_) => initialState,
+    updateCoinsStatus: (state, { payload }) => {
+      state.status = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(
       getCoinsWithGlobalAveragePrice.fulfilled,
       (state, { payload }) => {
+        state.status = STATUS.SUCCESS;
         state.coins = payload.coins;
       }
     );
@@ -29,5 +33,5 @@ const slice = createSlice({
   },
 });
 
-export const { coinsReset } = slice.actions;
+export const { coinsReset, updateCoinsStatus } = slice.actions;
 export const coinsReducer = slice.reducer;
