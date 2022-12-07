@@ -8,15 +8,14 @@ import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinDetailCard } from 'components/organisms/CoinDetailCard';
 import { CoinCards } from 'components/organisms/CoinCards';
 
-const coins = [];
-
 export const Home = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); //NOTE: change to false for real usage
   const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
   const [selectedCoin, setSelectedCoin] = useState();
+  const coins = []; //NOTE: get data from api for real usage
 
   useEffect(() => {
-    // to call api for first time
+    //NOTE: to call api for first time
   }, [selectedCurrency, selectedCoin]);
 
   const handleSelectCoin = (coin) => {
@@ -59,7 +58,7 @@ export const Home = () => {
       />
       <CoinCards
         data={coins}
-        isLoading={true}
+        isLoading={isLoading}
         currency={selectedCurrency}
         onClick={handleSelectCoin}
       />
