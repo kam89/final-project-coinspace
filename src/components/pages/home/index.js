@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Box, Container, SvgIcon, Typography } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +15,8 @@ import { STATUS } from 'api';
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
+  const CoinDetailCardRef = useRef();
+  // const [isLoading, setIsLoading] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
   const [selectedCoin, setSelectedCoin] = useState();
   const coins = useSelector(getCoins);
@@ -28,8 +29,15 @@ export const Home = () => {
   const handleSelectCoin = (coin) => {
     if (selectedCoin?.id === coin.id) return;
     setSelectedCoin(coin);
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), [1000]);
+    const scrollTop = document.documentElement.scrollTop;
+    if (scrollTop > 400) return;
+    setTimeout(
+      () =>
+        CoinDetailCardRef.current.scrollIntoView(false, { behavior: 'smooth' }),
+      [100]
+    );
+    // setIsLoading(true);
+    // setTimeout(() => setIsLoading(false), [1000]);
   };
 
   const handleSelectCurrency = (value) => {
@@ -66,15 +74,14 @@ export const Home = () => {
       <CoinCards
         data={coins}
         isLoading={
-          isLoading ||
-          coinsStatus === STATUS.LOADING ||
-          coinsStatus === STATUS.IDLE
+          coinsStatus === STATUS.LOADING || coinsStatus === STATUS.IDLE
         }
         currency={selectedCurrency}
         onClick={handleSelectCoin}
       />
       <CoinDetailCard data={selectedCoin} currency={selectedCurrency} />
 
+      <div ref={CoinDetailCardRef} />
       <Box>
         <Outlet />
       </Box>
