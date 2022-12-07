@@ -21,14 +21,12 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoinsWithGlobalAveragePrice } from 'redux/coins/thunk';
 import { getCoins } from 'redux/coins/selector';
-import { Twitter } from '@mui/icons-material';
 
-import { coins, currencies, ranks, ranksColor } from './data';
+import { coins, currencies } from './data';
 import { CoinCard } from 'components/molecules/CoinCard';
-import { formatAmount } from 'function';
-import { PriceChanges } from 'components/molecules/PriceChanges';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
+import { CoinDetailCard } from 'components/organisms/CoinDetailCard';
 
 export const Home = () => {
   const theme = useTheme();
@@ -52,19 +50,6 @@ export const Home = () => {
     if (selectedCurrency === value) return;
     setSelectedCurrency(value);
   };
-
-  const handleOpenWebsite = (url) => {
-    console.log(url);
-  };
-
-  const getDisplayNameFromURL = (value) => {
-    const domain = new URL(value);
-    return domain.hostname;
-  };
-
-  const availableSupplyPercentage = Math.floor(
-    (selectedCoin?.availableSupply / selectedCoin?.totalSupply) * 100
-  );
 
   return (
     <Container sx={{ marginTop: 1, marginBottom: 6 }}>
@@ -110,166 +95,8 @@ export const Home = () => {
           />
         ))}
       </Stack>
-      {selectedCoin && (
-        <Paper sx={{ padding: 5 }}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: bigScreen ? 'row' : 'column',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: 2,
-            }}>
-            <Box
-              component="img"
-              src={selectedCoin.icon}
-              sx={{ width: 80, height: 80 }}
-            />
-            <Box
-              sx={{
-                display: 'flex',
-                flex: 1,
-                flexDirection: 'column',
-                marginLeft: 1,
-              }}>
-              <Typography variant="h6">{selectedCoin.name}</Typography>
-              <Typography variant="body2" color="text.secondary">
-                {selectedCoin.symbol}
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                marginRight: 1,
-                alignItems: 'center',
-              }}>
-              <Typography variant="body1">
-                {formatAmount(selectedCurrency, selectedCoin.price)}
-              </Typography>
-              <Stack
-                direction={bigScreen ? 'row' : 'column'}
-                spacing={1}
-                alignItems="center">
-                <PriceChanges value={selectedCoin.priceChange1h} type="1h" />
-                <PriceChanges value={selectedCoin.priceChange1d} type="1d" />
-                <PriceChanges value={selectedCoin.priceChange1w} type="1w" />
-              </Stack>
-            </Box>
-            <Avatar
-              sx={{
-                backgroundColor: ranksColor[selectedCoin.rank],
-                alignSelf: 'flex-start',
-              }}>
-              {ranks[selectedCoin.rank]}
-            </Avatar>
-          </Box>
-          <Divider variant="middle" />
 
-          <Grid
-            container
-            columns={{ xs: 1, sm: 2, md: 3, lg: 3 }}
-            rowSpacing={1}
-            columnSpacing={1}
-            direction={'row'}
-            sx={{ marginTop: 1 }}>
-            <Grid item xs={1}>
-              <Card sx={{ height: '100%' }}>
-                <CardContent>
-                  <Typography variant="caption">Volume</Typography>
-                  <Typography variant="body2">{selectedCoin.volume}</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={1}>
-              <Card sx={{ height: '100%' }}>
-                <CardContent>
-                  <Typography variant="caption">
-                    Market Capitalization
-                  </Typography>
-                  <Typography variant="body2">
-                    {formatAmount(selectedCurrency, selectedCoin.marketCap)}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={1}>
-              <Card sx={{ height: '100%' }}>
-                <CardContent>
-                  <Box sx={{ marginTop: 1 }}>
-                    <Box
-                      sx={{
-                        flexDirection: bigScreen ? 'row' : 'column',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}>
-                      <Typography variant="caption">Available</Typography>
-                      <Typography variant="caption">
-                        {selectedCoin.availableSupply}
-                      </Typography>
-                    </Box>
-                    <LinearProgress
-                      variant="buffer"
-                      value={availableSupplyPercentage}
-                      valueBuffer={100}
-                    />
-                    <Box
-                      sx={{
-                        flexDirection: bigScreen ? 'row' : 'column',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}>
-                      <Typography variant="caption">Total</Typography>
-                      <Typography variant="caption">
-                        {selectedCoin.totalSupply}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={3}>
-              <Card>
-                <CardContent>
-                  <Typography variant="caption">
-                    Websites & Explorers
-                  </Typography>
-                  <Stack
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    sx={{ flexWrap: 'wrap', gap: 0.5, marginTop: 1 }}>
-                    <Chip
-                      color="info"
-                      variant="filled"
-                      label={'Website'}
-                      onClick={() => handleOpenWebsite(selectedCoin.websiteUrl)}
-                    />
-                    <Chip
-                      color="info"
-                      variant="filled"
-                      label={'Twitter'}
-                      icon={<Twitter fontSize="small" />}
-                      onClick={() => handleOpenWebsite(selectedCoin.twitterUrl)}
-                    />
-                    {selectedCoin.exp.map((exp, index) => (
-                      <Chip
-                        color="info"
-                        variant="filled"
-                        label={getDisplayNameFromURL(exp)}
-                        onClick={() => handleOpenWebsite(exp)}
-                        key={index}
-                      />
-                    ))}
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-        </Paper>
-      )}
+      <CoinDetailCard data={selectedCoin} currency={selectedCurrency} />
     </Container>
   );
 };
