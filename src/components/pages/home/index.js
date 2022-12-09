@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Box, Container, SvgIcon, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCoins, getCoinsStatus } from 'redux/coins/selector';
 import { getCoinsWithGlobalAveragePrice } from 'redux/coins/thunk';
 
-import { currencies } from 'components/templates/home/data';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinCards } from 'components/organisms/CoinCards';
@@ -18,7 +17,6 @@ export const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currency = useSelector(getCurrency);
-
   const coins = useSelector(getCoins);
   const coinsStatus = useSelector(getCoinsStatus);
 
