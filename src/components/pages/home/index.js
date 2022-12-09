@@ -11,7 +11,8 @@ import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinCards } from 'components/organisms/CoinCards';
 import { STATUS } from 'api';
 import { getCurrency } from 'redux/settings/selector';
-import { updateSettingsObject } from 'redux/settings/reducer';
+import { updateCurrency } from 'redux/settings/reducer';
+import { updateSelectedCoin } from 'redux/coins/reducer';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -25,12 +26,13 @@ export const Home = () => {
   }, [currency]);
 
   const handleSelectCoin = (coin) => {
+    dispatch(updateSelectedCoin(coin));
     return navigate(`/CoinDetail/${coin.id}`);
   };
 
   const handleSelectCurrency = (value) => {
     if (currency === value) return;
-    dispatch(updateSettingsObject({ currency: value }));
+    dispatch(updateCurrency(value));
   };
 
   return (
