@@ -11,27 +11,28 @@ import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinCards } from 'components/organisms/CoinCards';
 import { STATUS } from 'api';
+import { getCurrency } from 'redux/settings/selector';
+import { updateSettingsObject } from 'redux/settings/reducer';
 
 export const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
-  const [selectedCoin, setSelectedCoin] = useState();
+  const currency = useSelector(getCurrency);
+
   const coins = useSelector(getCoins);
   const coinsStatus = useSelector(getCoinsStatus);
 
   useEffect(() => {
-    dispatch(getCoinsWithGlobalAveragePrice({ currency: selectedCurrency }));
-  }, [selectedCurrency]);
+    dispatch(getCoinsWithGlobalAveragePrice({ currency }));
+  }, [currency]);
 
   const handleSelectCoin = (coin) => {
-    setSelectedCoin(coin);
     return navigate(`/CoinDetail/${coin.id}`);
   };
 
   const handleSelectCurrency = (value) => {
-    if (selectedCurrency === value) return;
-    setSelectedCurrency(value);
+    if (currency === value) return;
+    dispatch(updateSettingsObject({ currency: value }));
   };
 
   return (
@@ -55,17 +56,14 @@ export const Home = () => {
         </Typography>
       </Box>
 
-      <Typography variant="h4">Top 5 Coins</Typography>
-      <CurrenciesChipGroup
-        currency={selectedCurrency}
-        onClick={handleSelectCurrency}
-      />
+      <Typography variant="h4">The 5 Elites</Typography>
+      <CurrenciesChipGroup currency={currency} onClick={handleSelectCurrency} />
       <CoinCards
         data={coins}
         isLoading={
           coinsStatus === STATUS.LOADING || coinsStatus === STATUS.IDLE
         }
-        currency={selectedCurrency}
+        currency={currency}
         onClick={handleSelectCoin}
       />
     </Container>
