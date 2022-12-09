@@ -25,7 +25,6 @@ export const Home = () => {
   }, [selectedCurrency]);
 
   const handleSelectCoin = (coin) => {
-    if (selectedCoin?.id === coin.id) return;
     setSelectedCoin(coin);
     return navigate(`/CoinDetail/${selectedCoin.id}`);
   };

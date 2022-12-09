@@ -19,7 +19,6 @@ export const Home = () => {
   }, [selectedCurrency, selectedCoin]);
 
   const handleSelectCoin = (coin) => {
-    if (selectedCoin?.id === coin.id) return;
     setSelectedCoin(coin);
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), [1000]);
