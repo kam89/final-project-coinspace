@@ -14,7 +14,7 @@ import '@fontsource/roboto/700.css';
 
 import { defaultThemes } from 'themes';
 import { Home } from 'components/pages/home';
-import { HistoricalPrice } from 'components/templates/historicalPrice';
+import { CoinDetail } from 'components/templates/CoinDetail';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import { NavBar } from 'components/organisms/NavBar';
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'CoinDetail/:id',
-    element: <HistoricalPrice />,
+    element: <CoinDetail />,
   },
 ]);
 
