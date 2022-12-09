@@ -10,6 +10,7 @@ const initialState = {
   coins: [],
   historyStatus: STATUS.IDLE,
   history: [],
+  selectedCoin: {},
 };
 
 const slice = createSlice({
@@ -19,6 +20,9 @@ const slice = createSlice({
     coinsReset: (_) => initialState,
     updateCoinsStatus: (state, { payload }) => {
       state.status = payload;
+    },
+    updateSelectedCoin: (state, { payload }) => {
+      state.selectedCoin = payload;
     },
   },
   extraReducers: (builder) => {
@@ -51,5 +55,6 @@ const slice = createSlice({
   },
 });
 
-export const { coinsReset, updateCoinsStatus } = slice.actions;
+export const { coinsReset, updateCoinsStatus, updateSelectedCoin } =
+  slice.actions;
 export const coinsReducer = slice.reducer;
