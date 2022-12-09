@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Container, SvgIcon, Typography } from '@mui/material';
+import { Box, Container, SvgIcon, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import { currencies } from './data';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinCards } from 'components/organisms/CoinCards';
-import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -23,15 +23,12 @@ export const Home = () => {
     setSelectedCoin(coin);
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), [1000]);
+    return navigate(`/CoinDetail/${selectedCoin.id}`);
   };
 
   const handleSelectCurrency = (value) => {
     if (selectedCurrency === value) return;
     setSelectedCurrency(value);
-  };
-
-  const handleShowHistoricalPrice = () => {
-    return navigate(`/HistoricalPrice/${selectedCoin.id}`);
   };
 
   return (
@@ -66,20 +63,6 @@ export const Home = () => {
         currency={selectedCurrency}
         onClick={handleSelectCoin}
       />
-      {selectedCoin && (
-        <Box
-          sx={{
-            textAlign: 'center',
-            marginTop: 5,
-          }}>
-          <Button
-            variant="outlined"
-            size="large"
-            onClick={handleShowHistoricalPrice}>
-            {'View Historical Price'}
-          </Button>
-        </Box>
-      )}
     </Container>
   );
 };
