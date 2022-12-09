@@ -8,6 +8,33 @@ export const periods = {
   all: 'all',
 };
 
+export const selectedCoin = {
+  id: 'ethereum',
+  icon: 'https://static.coinstats.app/coins/1650455629727.png',
+  name: 'Ethereum',
+  symbol: 'ETH',
+  rank: 2,
+  price: 1275.5127452531594,
+  priceBtc: 0.07431081341696223,
+  volume: 16291704442.698547,
+  marketCap: 153728957281.39496,
+  availableSupply: 120523262.392712,
+  totalSupply: 120523262.392712,
+  priceChange1h: -0.06,
+  priceChange1d: 1.96,
+  priceChange1w: -0.32,
+  websiteUrl: 'https://www.ethereum.org/',
+  twitterUrl: 'https://twitter.com/ethereum',
+  contractAddress: '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
+  decimals: 18,
+  exp: [
+    'https://etherscan.io/',
+    'https://ethplorer.io/',
+    'https://blockchair.com/ethereum',
+    'https://eth.tokenview.io/',
+  ],
+};
+
 export const history = [
   [1667897700, 19721.402, 1, 13.2791],
   [1667984100, 18111.5498, 1, 14.3554],
