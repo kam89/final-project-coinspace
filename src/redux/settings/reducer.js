@@ -10,13 +10,11 @@ const slice = createSlice({
   initialState,
   reducers: {
     settingsReset: (_) => initialState,
-    updateSettingsObject: (state, { payload }) => {
-      for (const key in payload) {
-        state[key] = payload[key];
-      }
+    updateCurrency: (state, { payload }) => {
+      state.currency = payload;
     },
   },
 });
 
-export const { settingsReset, updateSettingsObject } = slice.actions;
+export const { settingsReset, updateCurrency } = slice.actions;
 export const settingsReducer = slice.reducer;
