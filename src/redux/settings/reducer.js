@@ -18,5 +18,5 @@ const slice = createSlice({
   },
 });
 
-export const { settingsReset } = slice.actions;
+export const { settingsReset, updateSettingsObject } = slice.actions;
 export const settingsReducer = slice.reducer;
