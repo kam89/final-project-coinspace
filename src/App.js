@@ -6,7 +6,7 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from '@mui/material';
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: 'HistoricalPrice/:id',
+    path: 'CoinDetail/:id',
     element: <HistoricalPrice />,
   },
 ]);
