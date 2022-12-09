@@ -22,7 +22,7 @@ export const Home = () => {
     setSelectedCoin(coin);
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), [1000]);
-    return navigate(`/CoinDetail/${selectedCoin.id}`);
+    return navigate(`/CoinDetail/${coin.id}`);
   };
 
   const handleSelectCurrency = (value) => {

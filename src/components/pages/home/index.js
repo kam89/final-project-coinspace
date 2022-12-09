@@ -26,7 +26,7 @@ export const Home = () => {
 
   const handleSelectCoin = (coin) => {
     setSelectedCoin(coin);
-    return navigate(`/CoinDetail/${selectedCoin.id}`);
+    return navigate(`/CoinDetail/${coin.id}`);
   };
 
   const handleSelectCurrency = (value) => {
