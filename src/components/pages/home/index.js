@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Container, SvgIcon, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getCoins, getCoinsStatus } from 'redux/coins/selector';
@@ -8,13 +9,12 @@ import { getCoinsWithGlobalAveragePrice } from 'redux/coins/thunk';
 import { currencies } from 'components/templates/home/data';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
-import { CoinDetailCard } from 'components/organisms/CoinDetailCard';
 import { CoinCards } from 'components/organisms/CoinCards';
 import { STATUS } from 'api';
 
 export const Home = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const CoinDetailCardRef = useRef();
   const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
   const [selectedCoin, setSelectedCoin] = useState();
   const coins = useSelector(getCoins);
@@ -27,13 +27,7 @@ export const Home = () => {
   const handleSelectCoin = (coin) => {
     if (selectedCoin?.id === coin.id) return;
     setSelectedCoin(coin);
-    const scrollTop = document.documentElement.scrollTop;
-    if (scrollTop > 400) return;
-    setTimeout(
-      () =>
-        CoinDetailCardRef.current.scrollIntoView(false, { behavior: 'smooth' }),
-      [100]
-    );
+    return navigate(`/CoinDetail/${selectedCoin.id}`);
   };
 
   const handleSelectCurrency = (value) => {
@@ -75,8 +69,6 @@ export const Home = () => {
         currency={selectedCurrency}
         onClick={handleSelectCoin}
       />
-      <CoinDetailCard data={selectedCoin} currency={selectedCurrency} />
-      <div ref={CoinDetailCardRef} />
     </Container>
   );
 };
