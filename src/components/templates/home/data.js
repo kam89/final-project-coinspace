@@ -1,5 +1,11 @@
-import { Looks3, Looks4, Looks5, LooksOne, LooksTwo } from "@mui/icons-material";
-import { blueGrey } from "@mui/material/colors";
+import {
+  Looks3,
+  Looks4,
+  Looks5,
+  LooksOne,
+  LooksTwo,
+} from '@mui/icons-material';
+import { blueGrey } from '@mui/material/colors';
 
 export const ranks = {
   1: <LooksOne />,
@@ -10,19 +16,19 @@ export const ranks = {
 };
 
 export const lottieRanks = {
-  1: "https://assets3.lottiefiles.com/packages/lf20_otic4zzq.json",
-  2: "https://assets7.lottiefiles.com/packages/lf20_5ao2yi69.json",
-  3: "https://assets5.lottiefiles.com/packages/lf20_rstfabfn.json",
-  4: "https://assets7.lottiefiles.com/packages/lf20_sw59me01.json",
-  5: "https://assets7.lottiefiles.com/packages/lf20_dwf8jt6a.json",
+  1: 'https://assets3.lottiefiles.com/packages/lf20_otic4zzq.json',
+  2: 'https://assets7.lottiefiles.com/packages/lf20_5ao2yi69.json',
+  3: 'https://assets5.lottiefiles.com/packages/lf20_rstfabfn.json',
+  4: 'https://assets7.lottiefiles.com/packages/lf20_sw59me01.json',
+  5: 'https://assets7.lottiefiles.com/packages/lf20_dwf8jt6a.json',
 };
 
 export const lottieRanksIframe = {
-  1: "https://embed.lottiefiles.com/animation/33614",
-  2: "https://embed.lottiefiles.com/animation/33618",
-  3: "https://embed.lottiefiles.com/animation/33615",
-  4: "https://embed.lottiefiles.com/animation/33612",
-  5: "https://embed.lottiefiles.com/animation/33617",
+  1: 'https://embed.lottiefiles.com/animation/33614',
+  2: 'https://embed.lottiefiles.com/animation/33618',
+  3: 'https://embed.lottiefiles.com/animation/33615',
+  4: 'https://embed.lottiefiles.com/animation/33612',
+  5: 'https://embed.lottiefiles.com/animation/33617',
 };
 
 export const ranksColor = {
@@ -33,12 +39,12 @@ export const ranksColor = {
   5: blueGrey[400],
 };
 
-export const currencies = {
+export const famousCurrencies = {
   EUR: 'EUR',
   GBP: 'GBP',
   USD: 'USD',
   MYR: 'MYR',
-  SGD: 'SGD'
+  SGD: 'SGD',
 };
 
 export const coins = [
@@ -62,8 +68,8 @@ export const coins = [
     exp: [
       'https://blockchair.com/bitcoin/',
       'https://btc.com/',
-      'https://btc.tokenview.io/'
-    ]
+      'https://btc.tokenview.io/',
+    ],
   },
   {
     id: 'ethereum',
@@ -88,8 +94,8 @@ export const coins = [
       'https://etherscan.io/',
       'https://ethplorer.io/',
       'https://blockchair.com/ethereum',
-      'https://eth.tokenview.io/'
-    ]
+      'https://eth.tokenview.io/',
+    ],
   },
   {
     id: 'tether',
@@ -120,8 +126,8 @@ export const coins = [
       'https://nearblocks.io/token/dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near',
       'https://cronos-explorer.crypto.org/token/0x66e428c3f67a68878562e79a0234c1f83c208770',
       'https://avascan.info/blockchain/c/address/0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7/token',
-      'https://blockchair.com/ethereum/erc-20/token/0xdac17f958d2ee523a2206206994597c13d831ec7'
-    ]
+      'https://blockchair.com/ethereum/erc-20/token/0xdac17f958d2ee523a2206206994597c13d831ec7',
+    ],
   },
   {
     id: 'binance-coin',
@@ -147,8 +153,8 @@ export const coins = [
       'https://explorer.binance.org/',
       'https://bscscan.com',
       'https://blockchair.com/ethereum/erc-20/token/0xb8c77482e45f1f44de1745f52c74426c631bdd52',
-      'https://etherscan.io/token/0xB8c77482e45F1F44dE1745F52C74426C631bDD52'
-    ]
+      'https://etherscan.io/token/0xB8c77482e45F1F44dE1745F52C74426C631bDD52',
+    ],
   },
   {
     id: 'usd-coin',
@@ -179,7 +185,7 @@ export const coins = [
       'https://ftmscan.com/address/0x04068da6c83afcfa0e13ba15a6696662335d5b75',
       'https://arbiscan.io/token/0xff970a61a04b1ca14834a43f5de4533ebddb5cc8',
       'https://ethplorer.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-      'https://evmexplorer.velas.com/token/0x80a16016cc4a2e6a2caca8a4a498b1699ff0f844'
-    ]
-  }
+      'https://evmexplorer.velas.com/token/0x80a16016cc4a2e6a2caca8a4a498b1699ff0f844',
+    ],
+  },
 ];
