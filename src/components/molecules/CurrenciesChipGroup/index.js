@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Stack, Chip, Avatar } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { famousCurrencies } from 'components/templates/home/data';
-import { getAllCurrencies } from 'redux/settings/selector';
+import { getAllCurrencies, getCurrency } from 'redux/settings/selector';
 
-export const CurrenciesChipGroup = ({ currency, onClick }) => {
+export const CurrenciesChipGroup = ({ onClick }) => {
+  const currency = useSelector(getCurrency);
   const allCurrencies = useSelector(getAllCurrencies);
   const [currencyStack, setCurrencyStack] = useState([]);
 
