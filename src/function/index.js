@@ -3,12 +3,19 @@ import { green, grey, red } from '@mui/material/colors';
 import { TrendingDown, TrendingUp } from '@mui/icons-material';
 
 export const formatAmount = (currency, value) => {
-  return Intl.NumberFormat('en-us', { style: 'currency', currency: currency }).format(value);
+  return Intl.NumberFormat('en-us', {
+    style: 'currency',
+    currency: currency.name,
+    currencyDisplay: 'code',
+  })
+    .format(value)
+    .replace(currency.name, currency.symbol)
+    .trim();
 };
 
 formatAmount.propTypes = {
   currency: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
 };
 
 export const renderAmountColor = (value) => {
@@ -18,15 +25,16 @@ export const renderAmountColor = (value) => {
 };
 
 renderAmountColor.propTypes = {
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
 };
 
 export const renderAmountSign = (value) => {
   if (value === 0) return;
   if (value > 0) return <TrendingUp sx={{ color: renderAmountColor(value) }} />;
-  if (value < 0) return <TrendingDown sx={{ color: renderAmountColor(value) }} />;
+  if (value < 0)
+    return <TrendingDown sx={{ color: renderAmountColor(value) }} />;
 };
 
 renderAmountSign.propTypes = {
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
 };
