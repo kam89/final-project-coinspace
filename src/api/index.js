@@ -1,4 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
+
+//REACT_APP_API_URL=https://api.coinstats.app/public/v1/
 
 export const STATUS = {
   IDLE: 'idle',
