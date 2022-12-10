@@ -44,14 +44,14 @@ export const HistoricalPriceChart = ({ min, max, data }) => {
     if (data.value === min)
       return (
         <text {...newData} fill="#fff">
-          Low: {data.value}
+          Low: {formatAmount(currencyDetail, data.value)}
         </text>
       );
 
     if (data.value === max)
       return (
         <text {...newData} fill="#fff">
-          High: {data.value}
+          High: {formatAmount(currencyDetail, data.value)}
         </text>
       );
   };
