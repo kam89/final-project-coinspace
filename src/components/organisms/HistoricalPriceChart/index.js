@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Chip, Stack, useTheme } from '@mui/material';
 import {
   Area,
@@ -9,29 +9,73 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { formatAmount } from 'function';
 import { CustomTooltipRecharts } from 'components/molecules/CustomTooltipRecharts';
-import { useSelector } from 'react-redux';
 import { getCurrency, getCurrencyByName } from 'redux/settings/selector';
 
 import { periods } from 'components/templates/CoinDetail/data';
 import { grey } from '@mui/material/colors';
+import { getHistoricalGlobalAveragePriceChart } from 'redux/coins/thunk';
+import { getHistoryStatus } from 'redux/coins/selector';
+import { STATUS } from 'api';
 
-export const HistoricalPriceChart = ({
-  min,
-  max,
-  data,
-  period,
-  handlePeriodChange,
-}) => {
+export const HistoricalPriceChart = ({ id }) => {
   const theme = useTheme();
+  const dispatch = useDispatch();
+
   const currency = useSelector(getCurrency);
   const currencyDetail = useSelector(getCurrencyByName(currency));
+  const status = useSelector(getHistoryStatus);
+
+  const [data, setData] = useState([]);
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(0);
+  const [period, setPeriod] = useState(periods['1m']);
+
+  useEffect(() => {
+    getSeriesforCharts();
+  }, [period]);
+
+  const getSeriesforCharts = async () => {
+    const response = await dispatch(
+      getHistoricalGlobalAveragePriceChart({ id, period })
+    );
+    const { meta, payload } = response;
+    if (meta?.requestStatus !== 'fulfilled') return;
+    let data = [];
+    let min, max;
+    const history = payload?.chart;
+    history.forEach((item, index) => {
+      const { rate } = currencyDetail;
+      const newItem = {
+        date: item[0],
+        price: item[1] * rate,
+        btc: item[2],
+        eth: item[4],
+      };
+      data.push(newItem);
+      if (index === 0) {
+        min = item[1];
+        max = item[1];
+      }
+      if (item[1] < min) min = item[1];
+      if (item[1] > max) max = item[1];
+    });
+    setMin(min);
+    setMax(max);
+    setData(data);
+  };
+
+  const handlePeriodChange = (value) => {
+    if (value === period) return;
+    setPeriod(value);
+  };
 
   const formatXAxisTick = (value) => {
     const date = new Date(value * 1000);
     const newDateFormatted = date.toISOString().split('T');
+    if (period === periods['1d']) return newDateFormatted[1].substring(0, 8);
     return newDateFormatted[0];
   };
 
@@ -64,6 +108,8 @@ export const HistoricalPriceChart = ({
         </text>
       );
   };
+
+  if (status !== STATUS.SUCCESS) return null;
 
   return (
     <Box
