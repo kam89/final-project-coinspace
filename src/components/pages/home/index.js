@@ -10,7 +10,7 @@ import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinCards } from 'components/organisms/CoinCards';
 import { STATUS } from 'api';
-import { getCurrency } from 'redux/settings/selector';
+import { getCurrency, getCurrencyByName } from 'redux/settings/selector';
 import { updateCurrency } from 'redux/settings/reducer';
 import { updateSelectedCoin } from 'redux/coins/reducer';
 import { getFiats } from 'redux/settings/thunk';
@@ -19,6 +19,7 @@ export const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currency = useSelector(getCurrency);
+  const currencyDetail = useSelector(getCurrencyByName(currency));
   const coins = useSelector(getCoins);
   const coinsStatus = useSelector(getCoinsStatus);
 
@@ -65,7 +66,7 @@ export const Home = () => {
         isLoading={
           coinsStatus === STATUS.LOADING || coinsStatus === STATUS.IDLE
         }
-        currency={currency}
+        currency={currencyDetail}
         onClick={handleSelectCoin}
       />
     </Container>
