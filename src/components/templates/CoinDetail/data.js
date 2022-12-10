@@ -8,6 +8,13 @@ export const periods = {
   all: 'all',
 };
 
+export const currencyDetail = {
+  name: 'EUR',
+  rate: 0.9481503956157525,
+  symbol: '€',
+  imageUrl: 'https://static.coinstats.app/flags/EUR_r.png',
+};
+
 export const selectedCoin = {
   id: 'ethereum',
   icon: 'https://static.coinstats.app/coins/1650455629727.png',
