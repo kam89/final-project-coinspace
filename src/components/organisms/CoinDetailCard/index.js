@@ -30,7 +30,6 @@ export const CoinDetailCard = ({ data = {} }) => {
   if (Object.keys(data).length === 0) return null;
 
   const {
-    id,
     icon,
     name,
     symbol,
