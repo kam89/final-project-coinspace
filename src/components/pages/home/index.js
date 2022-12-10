@@ -64,7 +64,7 @@ export const Home = () => {
       </Box>
 
       <Typography variant="h4">The 5 Elites</Typography>
-      <CurrenciesChipGroup currency={currency} onClick={handleSelectCurrency} />
+      <CurrenciesChipGroup onClick={handleSelectCurrency} />
       <CoinCards
         data={coins}
         isLoading={

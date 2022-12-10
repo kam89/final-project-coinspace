@@ -54,10 +54,7 @@ export const Home = () => {
       </Box>
 
       <Typography variant="h4">Top 5 Coins</Typography>
-      <CurrenciesChipGroup
-        currency={selectedCurrency}
-        onClick={handleSelectCurrency}
-      />
+      <CurrenciesChipGroup onClick={handleSelectCurrency} />
       <CoinCards
         data={coins}
         isLoading={isLoading}
