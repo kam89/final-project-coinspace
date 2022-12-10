@@ -12,14 +12,19 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { Twitter } from '@mui/icons-material';
 
 import { PriceChanges } from 'components/molecules/PriceChanges';
-import { formatAmount } from 'function';
 import { ranksColor, ranks } from 'components/templates/home/data';
+import { formatAmount } from 'function';
 
-export const CoinDetailCard = ({ data = {}, currency }) => {
+import { getCurrency, getCurrencyByName } from 'redux/settings/selector';
+
+export const CoinDetailCard = ({ data = {} }) => {
   const theme = useTheme();
+  const currency = useSelector(getCurrency);
+  const currencyDetail = useSelector(getCurrencyByName(currency));
   const bigScreen = useMediaQuery(theme.breakpoints.up('sm'));
 
   if (Object.keys(data).length === 0) return null;
@@ -87,7 +92,7 @@ export const CoinDetailCard = ({ data = {}, currency }) => {
             alignItems: 'center',
           }}>
           <Typography variant="body1">
-            {formatAmount(currency, price)}
+            {formatAmount(currencyDetail, price)}
           </Typography>
           <Stack
             direction={bigScreen ? 'row' : 'column'}
@@ -127,7 +132,7 @@ export const CoinDetailCard = ({ data = {}, currency }) => {
             <CardContent>
               <Typography variant="caption">Market Capitalization</Typography>
               <Typography variant="body2">
-                {formatAmount(currency, marketCap)}
+                {formatAmount(currencyDetail, marketCap)}
               </Typography>
             </CardContent>
           </Card>
