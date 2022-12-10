@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, useTheme } from '@mui/material';
+import { Box, Chip, Stack, useTheme } from '@mui/material';
 import {
   Area,
   AreaChart,
@@ -15,7 +15,16 @@ import { CustomTooltipRecharts } from 'components/molecules/CustomTooltipRechart
 import { useSelector } from 'react-redux';
 import { getCurrency, getCurrencyByName } from 'redux/settings/selector';
 
-export const HistoricalPriceChart = ({ min, max, data }) => {
+import { periods } from 'components/templates/CoinDetail/data';
+import { grey } from '@mui/material/colors';
+
+export const HistoricalPriceChart = ({
+  min,
+  max,
+  data,
+  period,
+  handlePeriodChange,
+}) => {
   const theme = useTheme();
   const currency = useSelector(getCurrency);
   const currencyDetail = useSelector(getCurrencyByName(currency));
@@ -57,9 +66,15 @@ export const HistoricalPriceChart = ({ min, max, data }) => {
   };
 
   return (
-    <Box sx={{ height: 500, width: theme.breakpoints.values.md }}>
+    <Box
+      sx={{
+        height: 500,
+        width: theme.breakpoints.values.md,
+        marginBottom: 5,
+      }}>
       <ResponsiveContainer width={'90%'} height={'90%'}>
         <AreaChart
+          key={period + Math.random()}
           data={data}
           margin={{ top: 20, right: 20, left: 80, bottom: 0 }}>
           <XAxis
@@ -83,6 +98,7 @@ export const HistoricalPriceChart = ({ min, max, data }) => {
           />
           <Tooltip content={CustomTooltipRecharts} cursor={false} />
           <Area
+            isAnimationActive={true}
             type={'natural'}
             dataKey="price"
             stroke={theme.palette.primary.main}
@@ -94,6 +110,29 @@ export const HistoricalPriceChart = ({ min, max, data }) => {
           />
         </AreaChart>
       </ResponsiveContainer>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Box
+          sx={{
+            display: 'inline-flex',
+            marginTop: 1,
+            alignItems: 'center',
+            backgroundColor: grey['800'],
+            padding: 1,
+            borderRadius: 2,
+          }}>
+          <Stack direction={'row'} spacing={1}>
+            {Object.values(periods).map((item, index) => (
+              <Chip
+                variant="filled"
+                color={item === period ? 'primary' : 'secondary'}
+                key={index}
+                label={item.toUpperCase()}
+                onClick={() => handlePeriodChange(item)}
+              />
+            ))}
+          </Stack>
+        </Box>
+      </Box>
     </Box>
   );
 };
