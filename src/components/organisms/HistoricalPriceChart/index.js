@@ -12,9 +12,13 @@ import {
 
 import { formatAmount } from 'function';
 import { CustomTooltipRecharts } from 'components/molecules/CustomTooltipRecharts';
+import { useSelector } from 'react-redux';
+import { getCurrency, getCurrencyByName } from 'redux/settings/selector';
 
-export const HistoricalPriceChart = ({ currency, min, max, data }) => {
+export const HistoricalPriceChart = ({ min, max, data }) => {
   const theme = useTheme();
+  const currency = useSelector(getCurrency);
+  const currencyDetail = useSelector(getCurrencyByName(currency));
 
   const formatXAxisTick = (value) => {
     const date = new Date(value * 1000);
@@ -23,7 +27,7 @@ export const HistoricalPriceChart = ({ currency, min, max, data }) => {
   };
 
   const formatYAxisTick = (value) => {
-    return formatAmount(currency, value);
+    return formatAmount(currencyDetail, value);
   };
 
   const renderDot = (data) => {
