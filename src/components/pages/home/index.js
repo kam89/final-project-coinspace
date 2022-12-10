@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getCoins, getCoinsStatus } from 'redux/coins/selector';
 import { getCoinsWithGlobalAveragePrice } from 'redux/coins/thunk';
+import { STATUS } from 'api';
 
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
-import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinCards } from 'components/organisms/CoinCards';
-import { STATUS } from 'api';
+import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
+
 import { getCurrency, getCurrencyByName } from 'redux/settings/selector';
 import { updateCurrency } from 'redux/settings/reducer';
 import { updateSelectedCoin } from 'redux/coins/reducer';
@@ -25,6 +26,9 @@ export const Home = () => {
 
   useEffect(() => {
     dispatch(getFiats({}));
+  }, []);
+
+  useEffect(() => {
     dispatch(getCoinsWithGlobalAveragePrice({ currency }));
   }, [currency]);
 
