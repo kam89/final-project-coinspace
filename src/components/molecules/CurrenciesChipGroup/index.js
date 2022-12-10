@@ -1,12 +1,12 @@
 import React from 'react';
 import { Stack, Chip } from '@mui/material';
-import { currencies } from 'components/templates/home/data';
+import { famousCurrencies } from 'components/templates/home/data';
 
 export const CurrenciesChipGroup = ({ currency, onClick }) => {
   return (
     <Stack alignItems={'flex-end'}>
       <Stack direction="row" spacing={1}>
-        {Object.values(currencies).map((item, index) => (
+        {Object.values(famousCurrencies).map((item, index) => (
           <Chip
             variant="filled"
             color={currency === item ? 'primary' : 'secondary'}

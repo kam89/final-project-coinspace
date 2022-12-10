@@ -5,13 +5,13 @@ import { ArrowBackIosNew } from '@mui/icons-material';
 
 import { formatAmount } from 'function';
 import { history, periods, selectedCoin } from './data';
-import { currencies } from '../home/data';
+import { famousCurrencies } from '../home/data';
 
 import { CoinDetailCard } from 'components/organisms/CoinDetailCard';
 import { HistoricalPriceChart } from 'components/organisms/HistoricalPriceChart';
 
 export const CoinDetail = ({}) => {
-  const currency = currencies.USD;
+  const currency = famousCurrencies.USD;
   const { id } = useParams();
   const navigate = useNavigate();
 

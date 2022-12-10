@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { STATUS } from 'api';
-import { currencies } from 'components/templates/home/data';
+import { famousCurrencies } from 'components/templates/home/data';
 import { getFiats } from './thunk';
 
 const initialState = {
-  currency: currencies.USD,
+  currency: famousCurrencies.USD,
   allCurrencies: [],
 };
 

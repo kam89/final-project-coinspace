@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Container, SvgIcon, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import { currencies } from './data';
+import { famousCurrencies } from './data';
 import { CurrenciesChipGroup } from 'components/molecules/CurrenciesChipGroup';
 import { ReactComponent as ScopeSvg } from 'assets/scope-bro.svg';
 import { CoinCards } from 'components/organisms/CoinCards';
@@ -10,7 +10,9 @@ import { CoinCards } from 'components/organisms/CoinCards';
 export const Home = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true); //NOTE: change to false for real usage
-  const [selectedCurrency, setSelectedCurrency] = useState(currencies.EUR);
+  const [selectedCurrency, setSelectedCurrency] = useState(
+    famousCurrencies.EUR
+  );
   const [selectedCoin, setSelectedCoin] = useState();
   const coins = []; //NOTE: get data from api for real usage
 

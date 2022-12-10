@@ -13,6 +13,7 @@ import { STATUS } from 'api';
 import { getCurrency } from 'redux/settings/selector';
 import { updateCurrency } from 'redux/settings/reducer';
 import { updateSelectedCoin } from 'redux/coins/reducer';
+import { getFiats } from 'redux/settings/thunk';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export const Home = () => {
   const coinsStatus = useSelector(getCoinsStatus);
 
   useEffect(() => {
+    dispatch(getFiats({}));
     dispatch(getCoinsWithGlobalAveragePrice({ currency }));
   }, [currency]);
 
