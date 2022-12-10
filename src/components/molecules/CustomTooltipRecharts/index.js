@@ -22,10 +22,9 @@ export const CustomTooltipRecharts = ({ active, payload, label }) => {
         <Typography variant="body2">
           {newDateFormatted[0] + ' ' + newDateFormatted[1].substring(0, 5)}
         </Typography>
-        <Typography variant="caption">{`USD : ${formatAmount(
-          currencyDetail,
-          payload[0].payload.price
-        )}`}</Typography>
+        <Typography variant="caption">
+          {formatAmount(currencyDetail, payload[0].payload.price)}
+        </Typography>
       </Box>
     );
   }
