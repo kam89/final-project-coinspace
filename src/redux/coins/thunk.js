@@ -18,3 +18,30 @@ export const getHistoricalGlobalAveragePriceChart = createAsyncThunk(
     return rejectWithValue(response.status);
   }
 );
+
+export const getMarkets = createAsyncThunk(
+  'getMarkets',
+  async ({ id }, { rejectWithValue }) => {
+    const response = await api.get(`/markets?coinId=${id}`);
+    if (response.status === 200) return response.data;
+    return rejectWithValue(response.status);
+  }
+);
+
+export const getNewsWithDate = createAsyncThunk(
+  'getNewsWithDate',
+  async ({ fromDate, toDate }, { rejectWithValue }) => {
+    const response = await api.get(`news?skip=0&limit=20`);
+    if (response.status === 200) return response.data;
+    return rejectWithValue(response.status);
+  }
+);
+
+export const getNewsWithFilter = createAsyncThunk(
+  'getNewsWithFilter',
+  async ({ filter }, { rejectWithValue }) => {
+    const response = await api.get(`news/${filter}?skip=0&limit=20`);
+    if (response.status === 200) return response.data;
+    return rejectWithValue(response.status);
+  }
+);

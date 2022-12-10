@@ -19,3 +19,19 @@ export const getSelectedCoin = createSelector(
   (state) => state.coins.selectedCoin,
   (selectedCoin) => selectedCoin
 );
+
+export const getMarket = createSelector(
+  (state) => state.coins.market,
+  (market) => market
+);
+
+export const getNewsById = (id) =>
+  createSelector(
+    (state) => state.coins.news,
+    (news) => news.filter((item) => item.relatedCoins.includes(id))
+  );
+
+export const getNewsStatus = createSelector(
+  (state) => state.coins.newStatus,
+  (status) => status
+);
