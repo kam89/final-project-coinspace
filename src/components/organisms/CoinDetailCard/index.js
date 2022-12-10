@@ -170,36 +170,53 @@ export const CoinDetailCard = ({ data = {} }) => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={3}>
-          <Typography variant="caption">Websites & Explorers</Typography>
-          <Stack
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            sx={{ flexWrap: 'wrap', gap: 0.5, marginTop: 1 }}>
-            <Chip
-              color="info"
-              variant="filled"
-              label={'Website'}
-              onClick={() => handleOpenWebsite(websiteUrl)}
-            />
-            <Chip
-              color="info"
-              variant="filled"
-              label={'Twitter'}
-              icon={<Twitter fontSize="small" />}
-              onClick={() => handleOpenWebsite(twitterUrl)}
-            />
-            {exp?.map((url, index) => (
-              <Chip
-                color="info"
-                variant="filled"
-                label={getDisplayNameFromURL(url)}
-                onClick={() => handleOpenWebsite(url)}
-                key={index}
-              />
-            ))}
-          </Stack>
+        <Grid item xs={1}>
+          <Card>
+            <CardContent>
+              <Typography variant="caption">Websites & Community</Typography>
+              <Stack
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ flexWrap: 'wrap', gap: 0.5, marginTop: 1 }}>
+                <Chip
+                  color="info"
+                  variant="filled"
+                  label={'Website'}
+                  onClick={() => handleOpenWebsite(websiteUrl)}
+                />
+                <Chip
+                  color="info"
+                  variant="filled"
+                  label={'Twitter'}
+                  icon={<Twitter fontSize="small" />}
+                  onClick={() => handleOpenWebsite(twitterUrl)}
+                />
+              </Stack>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card>
+            <CardContent>
+              <Typography variant="caption">Explorers</Typography>
+              <Stack
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                sx={{ flexWrap: 'wrap', gap: 0.5, marginTop: 1 }}>
+                {exp?.map((url, index) => (
+                  <Chip
+                    color="info"
+                    variant="filled"
+                    label={getDisplayNameFromURL(url)}
+                    onClick={() => handleOpenWebsite(url)}
+                    key={index}
+                  />
+                ))}
+              </Stack>
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     </Box>
