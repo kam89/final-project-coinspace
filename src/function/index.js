@@ -5,11 +5,11 @@ import { TrendingDown, TrendingUp } from '@mui/icons-material';
 export const formatAmount = (currency, value) => {
   return Intl.NumberFormat('en-us', {
     style: 'currency',
-    currency: currency.name,
+    currency: currency?.name,
     currencyDisplay: 'code',
   })
     .format(value)
-    .replace(currency.name, currency.symbol)
+    .replace(currency?.name, currency?.symbol)
     .trim();
 };
 
