@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Chip, Stack, useTheme } from '@mui/material';
+import { Box, Chip, CircularProgress, Stack, useTheme } from '@mui/material';
 import {
   Area,
   AreaChart,
@@ -109,13 +109,25 @@ export const HistoricalPriceChart = ({ id }) => {
       );
   };
 
-  if (status !== STATUS.SUCCESS) return null;
+  if (status !== STATUS.SUCCESS)
+    return (
+      <Box
+        sx={{
+          height: 500,
+          width: 'auto',
+          marginBottom: 5,
+          display: 'flex',
+          justifyContent: 'center',
+        }}>
+        <CircularProgress size={200} />
+      </Box>
+    );
 
   return (
     <Box
       sx={{
         height: 500,
-        width: theme.breakpoints.values.md,
+        width: 'auto',
         marginBottom: 5,
       }}>
       <ResponsiveContainer width={'90%'} height={'90%'}>
