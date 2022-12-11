@@ -170,7 +170,7 @@ export const CoinDetailCard = ({ data = {} }) => {
           </Card>
         </Grid>
         <Grid item xs={1}>
-          <Card>
+          <Card sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="caption">Websites & Community</Typography>
               <Stack
