@@ -38,6 +38,10 @@ export const News = ({ id }) => {
     dispatch(getNewsWithDate({ fromDate: today, toDate: oneMonthfromToday }));
   };
 
+  const handleOnNewsClick = (item) => {
+    window.open(item.shareURL, '_blank', 'noopener,noreferrer');
+  };
+
   if (status !== STATUS.SUCCESS)
     return (
       <Box>
@@ -67,7 +71,7 @@ export const News = ({ id }) => {
           <List sx={{ width: '100%' }}>
             {news.map((item, index) => (
               <ListItem key={index}>
-                <ListItemButton>
+                <ListItemButton onClick={() => handleOnNewsClick(item)}>
                   <ListItemText
                     primary={item.title}
                     secondary={
@@ -105,7 +109,7 @@ export const News = ({ id }) => {
           <List sx={{ width: '100%' }}>
             {overallNews.map((item, index) => (
               <ListItem key={index}>
-                <ListItemButton>
+                <ListItemButton onClick={() => handleOnNewsClick(item)}>
                   <ListItemText
                     primary={item.title}
                     secondary={
