@@ -14,7 +14,7 @@ import '@fontsource/roboto/700.css';
 
 import { defaultThemes } from 'themes';
 import { Home } from 'components/pages/home';
-import { CoinDetail } from 'components/pages/CoinDetail';
+import { CoinDetail } from 'components/pages/coinDetail';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import { NavBar } from 'components/organisms/NavBar';
