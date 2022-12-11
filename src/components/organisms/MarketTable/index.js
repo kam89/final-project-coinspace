@@ -11,7 +11,6 @@ import {
   TableCell,
   TablePagination,
   Stack,
-  Select,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -65,7 +64,10 @@ export const MarketTable = ({ id }) => {
                   <TableCell>{index + 1}</TableCell>
                   <TableCell>{item.exchange}</TableCell>
                   <TableCell>
-                    {formatAmount(currencyDetail, item.price)}
+                    {formatAmount(
+                      currencyDetail,
+                      item.price * currencyDetail.rate
+                    )}
                   </TableCell>
                   <TableCell>{item.pair}</TableCell>
                   <TableCell>{item.volume}</TableCell>
