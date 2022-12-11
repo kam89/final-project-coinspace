@@ -31,6 +31,11 @@ export const getNewsById = (id) =>
     (news) => news.filter((item) => item.relatedCoins.includes(id))
   );
 
+export const getOverallNews = createSelector(
+  (state) => state.coins.news,
+  (news) => news.filter((item) => item.relatedCoins.length === 0)
+);
+
 export const getNewsStatus = createSelector(
   (state) => state.coins.newStatus,
   (status) => status
