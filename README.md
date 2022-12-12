@@ -16,11 +16,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Credits & Attributions
 
-### api
+### Api
 
 1. [Coinstats](https://documenter.getpostman.com/view/5734027/RzZ6Hzr3?version=latest#80653def-a398-4ccd-8101-f4a47856e767)
 
-### packages
+### Packages
 
 1. [Material UI](https://mui.com/)
 2. [axios](https://axios-http.com/docs/intro)
@@ -29,7 +29,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 5. [React Router](https://reactrouter.com/en/main)
 6. [Lottiefiles](https://github.com/LottieFiles/lottie-react)
 
-### assets
+### Assets
 
 1. Picture at Home Page:
    <a href="https://storyset.com/sport">Sport illustrations by Storyset</a>
