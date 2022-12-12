@@ -4,9 +4,38 @@
 
 This project is a final project for React Development Bootcamp @ General Assembly Malaysia.
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
 ## Credit & Attribution
 
-<a href="https://storyset.com/sport">Sport illustrations by Storyset</a>
+### packages
+
+1. [Material UI](https://mui.com/)
+2. [axios](https://axios-http.com/docs/intro)
+3. [Redux](https://redux.js.org/)
+4. [recharts](https://recharts.org/en-US/)
+5. [React Router](https://reactrouter.com/en/main)
+6. [Lottiefiles](https://github.com/LottieFiles/lottie-react)
+
+### assets
+
+1. Picture at Home Page:
+   <a href="https://storyset.com/sport">Sport illustrations by Storyset</a>
+
+2. [Logo](https://lottiefiles.com/65593-bit-coin-spin)
+
+3. Animated Coins at Home Page
+   https://lottiefiles.com/33618-coin-speech
+   https://lottiefiles.com/33617-coin-jumping-rope
+   https://lottiefiles.com/33615-coin-fitness
+   https://lottiefiles.com/33614-coin-cup
+   https://lottiefiles.com/33612-coin-pull-up
+
+## How to use this project
+
+1. Clone this project to a directory at your PC.
+2. Run `npm install` or `yarn install`
+3. Run `npm start` or `yarn start`
 
 <!-- <a href="https://storyset.com/nature">Nature illustrations by Storyset</a> -->
 <!-- <a href="https://storyset.com/people">People illustrations by Storyset</a> -->
