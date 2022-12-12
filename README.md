@@ -1,4 +1,4 @@
-#
+# CoinSpace
 
 ## About this project
 
