@@ -4,9 +4,21 @@
 
 This project is a final project for React Development Bootcamp @ General Assembly Malaysia.
 
+The project is started from 30 November 2022 until 12 Dec 2022, presented on 12 Dec 2022.
+
+In short, which mean this project is presentable but not really in a very final stage. It can be better if more time is spent.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
-## Credit & Attribution
+## Methodologies / Inspirations
+
+1. [Atomic Design](https://github.com/danilowoz/react-atomic-design)
+
+## Credits & Attributions
+
+### api
+
+1. [Coinstats](https://documenter.getpostman.com/view/5734027/RzZ6Hzr3?version=latest#80653def-a398-4ccd-8101-f4a47856e767)
 
 ### packages
 
