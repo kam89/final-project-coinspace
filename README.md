@@ -6,7 +6,7 @@ This project is a final project for React Development Bootcamp @ General Assembl
 
 The project is started from 30 November 2022 until 12 Dec 2022, presented on 12 Dec 2022.
 
-In short, which mean this project is presentable but not really in a very final stage. It can be better if more time is spent.
+In short, which mean this project is presentable but not really in a very final stage. It can be better if more time is spent. But I learnt a lot from this project.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
