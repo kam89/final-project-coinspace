@@ -1,0 +1,12 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+*.html
+
+matrix(
+  1, 0, 0,
+  0, 1, 0,
+  0, 0, 1
+)
